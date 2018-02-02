@@ -35,12 +35,13 @@
 
 <body>
     <h3>Google Maps Task</h3>
+
     <form id="form">
         <label for="lat">Широта</label>
-        <input type="number" name="latitude" id="lat" step="0.0000001" min="-90" max="90" required>
+        <input type="number" name="lat" step="0.0000001" min="-90" max="90" required>
         <span class="validity"></span>
         <label for="lng">Долгота</label>
-        <input type="number" name="longitude" id="lng" step="0.000001" min="-180" max="180" required>
+        <input type="number" name="lng" step="0.000001" min="-180" max="180" required>
         <span class="validity"></span>
         <input type="submit" value="Push" id="sub">
     </form>
@@ -49,8 +50,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGeH1ktG_X3LfuDGbKfFwAMhikYw1aAms&callback=initMap" async
-        defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGeH1ktG_X3LfuDGbKfFwAMhikYw1aAms&libraries=drawing&callback=initMap" async defer></script>    
 </body>
 
 </html>
