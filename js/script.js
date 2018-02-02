@@ -1,32 +1,35 @@
-var form = document.getElementById("form");
-var btn = document.getElementById("btn");
+const coordinates = [];
+ 
+$('form').submit(function (event) {
+    event.preventDefault();
+    const input_values = {};  
+    $('form').find('input[type="number"]').each(function () {
+        const val = $(this).val();
+        const numeric = parseFloat(val);
+        input_values[this.name] = numeric;
+    });    
+    coordinates.push(input_values);
+    console.log(coordinates);
+    initMap();
+    $('form').trigger('reset');
+});
 
+// Google Maps API function
 function initMap() {
-    var options = {
+    const options = {
         zoom: 6,
         center: { lat: 49.444433, lng: 32.059767 }
     }
-    var myMap = new google.maps.Map(document.getElementById('map'), options);
+    const myMap = new google.maps.Map(document.getElementById('map'), options);
+
     function addMarker(coordinates) {
-        var marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: coordinates,
             map: myMap
         });
+        console.log('Marker added')
     }
-
-    // test
-    var odessa = {lat: 46.482526, lng: 30.723310}
-    addMarker(odessa);
-
-    // Click
-    btn.addEventListener("click", function () {
-        event.preventDefault();
-        var lat = form["lat"].value;
-        var lng = form["lng"].value;
-        var coordinates = {};
-        coordinates.lat = parseInt (lat, 10);
-        coordinates.lng = parseInt (lng, 10);
-        addMarker(coordinates);
-        form.reset();
-    });
+    coordinates.forEach(function(item){
+        addMarker(item);
+    })
 }
