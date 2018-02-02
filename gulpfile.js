@@ -1,6 +1,6 @@
-var gulp        = require('gulp');
+var gulp = require('gulp');
 var bs = require('browser-sync').create();
-var reload      = bs.reload;
+var reload = bs.reload;
 
 var paths = {
     html: '*.html',

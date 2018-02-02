@@ -2,14 +2,17 @@ const coordinates = [];
  
 $('form').submit(function (event) {
     event.preventDefault();
-    const input_values = {};  
+    const input_values = {};
+
     $('form').find('input[type="number"]').each(function () {
         const val = $(this).val();
         const numeric = parseFloat(val);
         input_values[this.name] = numeric;
-    });    
+    });
+
     coordinates.push(input_values);
     console.log(coordinates);
+
     initMap();
     $('form').trigger('reset');
 });
@@ -29,6 +32,7 @@ function initMap() {
         });
         console.log('Marker added')
     }
+    
     coordinates.forEach(function(item){
         addMarker(item);
     })
